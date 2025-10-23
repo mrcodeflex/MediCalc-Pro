@@ -1,0 +1,1 @@
+MediCalc Pro - Upload to GitHub and build in Codemagic. Default admin PIN: Medi@1234
