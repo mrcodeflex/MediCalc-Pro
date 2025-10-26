@@ -1,0 +1,29 @@
+
+name: medi_calc_pro
+description: MediCalc Pro - offline medical calculator
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  sqflite: ^2.3.3+1
+  flutter_secure_storage: ^8.1.0
+  provider: ^6.1.5
+  intl: ^0.18.1
+  math_expressions: ^2.7.0
+  uuid: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo/medi_calc_logo.png
+    - assets/data/calculators.json

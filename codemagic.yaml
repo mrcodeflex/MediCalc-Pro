@@ -1,0 +1,18 @@
+
+workflows:
+  android-release:
+    name: MediCalc Pro Android Release (One-tap)
+    environment:
+      flutter: "3.19.6"
+    scripts:
+      - name: Clean & get packages
+        script: |
+          flutter clean
+          flutter pub get
+      - name: Build release APK
+        script: |
+          flutter build apk --release
+          mkdir -p build/artifacts
+          cp build/app/outputs/flutter-apk/app-release.apk build/artifacts/MediCalc_Pro_v1.0.apk || true
+    artifacts:
+      - build/artifacts/MediCalc_Pro_v1.0.apk

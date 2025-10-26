@@ -1,0 +1,32 @@
+
+plugins {
+    id 'com.android.application' version '8.1.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.22' apply false
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'com.medicalc.pro'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.medicalc.pro"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions { jvmTarget = '1.8' }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    implementation 'com.google.android.material:material:1.8.0'
+}
