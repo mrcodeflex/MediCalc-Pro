@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f3f6f9" id="meta-theme">
+    <meta name="description" content="MediCalc Pro: laboratory calculators for eGFR, PT/INR, ACR, HOMA, osmolality, anion gap and more.">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="MediCalc">
+    <title>MediCalc Pro</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script>
+        /* Apply the saved theme before first paint so there is no light/dark flash. */
+        (function () {
+            try {
+                var pref = JSON.parse(localStorage.getItem('mc.theme')) || 'system';
+                var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            } catch (e) { /* keep light */ }
+        })();
+    </script>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <div class="statusfill" aria-hidden="true"></div>
+
+    <div id="app">
+        <main class="view" id="view-home" aria-label="Calculators"></main>
+        <main class="view" id="view-favorites" aria-label="Favorites" hidden></main>
+        <main class="view" id="view-settings" aria-label="Settings" hidden></main>
+
+        <nav class="tabbar" aria-label="Main">
+            <button class="tab" data-tab="home" type="button"></button>
+            <button class="tab" data-tab="favorites" type="button"></button>
+            <button class="tab" data-tab="settings" type="button"></button>
+        </nav>
+    </div>
+
+    <div id="pages"></div>
+    <div id="sheet-root"></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <div class="lock" id="lock" role="dialog" aria-modal="true" aria-labelledby="lock-title" hidden>
+        <div class="lock-card">
+            <img src="assets/icons/mark.svg" alt="" width="64" height="64">
+            <h2 id="lock-title">Subscription required</h2>
+            <p id="lock-message">Your subscription has expired. Please contact to renew access.</p>
+            <p class="muted" id="lock-expiry"></p>
+            <a class="link-btn" id="lock-contact" href="#" target="_blank" rel="noopener noreferrer">Contact to renew</a>
+        </div>
+    </div>
+
+    <noscript>MediCalc Pro needs JavaScript to run.</noscript>
+
+    <script src="js/calc.js"></script>
+    <script src="js/registry.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
